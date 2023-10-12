@@ -1,47 +1,53 @@
-/* Estilo básico para el body y el header */
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  background-color: rgb(100, 100, 100);
 }
 
-header {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
+li, a, button{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: white
 }
 
-/* Estilo para el logo */
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+}
+
 .logo {
-  margin-bottom: 20px;
+  cursor: pointer;
 }
 
-.logo img {
-  display: block;
-  margin: 0 auto;
-  max-width: 15%;
-  height: 15%;
+.nav_links li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.nav_links li a{
+  transition: all 0.3s ease 0s;
+
+}
+
+.nav_links li a:hover{
+  color: blue
   
 }
 
-/* Estilo para la navegación */
-nav ul {
-  list-style: none;
-  padding: 0;
+button {
+  padding: 9px 25px;
+  background-color: rgba(0,136,169,1);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
 }
 
-nav li {
-  display: inline;
-  margin-right: 20px;
+button:hover{
+  background-color: rgba(0,136,169,0.7);
 }
 
-nav a {
-  color: #fff;
-  text-decoration: none;
-}
-
-/* Cambiar color al pasar el ratón por encima */
-nav a:hover {
-  color: #ff6600;
-}
