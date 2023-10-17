@@ -103,6 +103,24 @@ iframe {
 }
 
 
+/* Estil pel codi de la app */
+
+.container2{
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px; 
+  overflow: auto;
+  height: 66%;
+  padding: 20px;
+}
+
+.code-wrapper{
+  position: relative;
+}
+
+
+
+
 
 
 
@@ -119,3 +137,4 @@ iframe {
   height: 5%;
   font-size: 22px;
 }
+
