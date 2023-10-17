@@ -52,8 +52,6 @@ header h1 {
 }
 
 
-
-
 /* CSS grid */
 
 .container {
@@ -80,14 +78,42 @@ img {
 }
 
 
+/* Estil Iframe */
 
 
-/* Estilo para el footer */
+.iframe-container {
+  width: 90%; 
+  margin: 0 auto; 
+  padding: 20px; 
+}
+
+
+iframe {
+  width: 100%; 
+  height: 100vh; 
+  border: none; 
+}
+
+.iframe-container h1 {
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  align-content: center;
+  padding-bottom: 20px;
+}
+
+
+
+
+
+
+/* Estil pel footer */
+
 .footer {
   background-color: #ffffff; 
   color: #000000; 
   text-align: center; 
-  position: absolute; 
+  position: relative; 
   bottom: 0; 
   width: 100%; 
   height: 5%;
