@@ -102,6 +102,34 @@ iframe {
 }
 
 
+/* Secció App */
+
+.container3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.text3 {
+  text-align: left;
+  padding: 20px;
+  margin-left: 50px;
+  color: rgb(0, 0, 0);
+}
+
+.code-displayer{
+  height: 80vh; 
+  overflow-y: auto;
+  padding-left: 20px;;  
+}
+
+
+
+
+
+
+
 
 /* Estil pel footer */
 
