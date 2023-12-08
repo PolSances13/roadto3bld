@@ -1,0 +1,14 @@
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.toc
+*.dat
+*.log
+*.gz
+*.out
+*.bcf
+main.run.xml
+rubikexampfig3.tex
