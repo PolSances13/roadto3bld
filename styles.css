@@ -45,9 +45,9 @@ header {
 }
 
 
-header h1 {
+header h2 {
   background-color: rgb(0, 0, 0);
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   color: white;
 }
@@ -66,6 +66,12 @@ header h1 {
   padding: 20px;
   margin-left: 50px;
   color: rgb(0, 0, 0);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.text h1,
+.text p{
+  margin-bottom: 20px;
 }
 
 .image {
@@ -118,6 +124,17 @@ iframe {
   padding: 20px;
   margin-left: 50px;
   color: rgb(0, 0, 0);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.text3 h1,
+.text3 p{
+  margin-bottom: 20px;
+}
+
+.text3 button {
+  width: 50px;
+  height: 50px;
 }
 
 .code-displayer {
