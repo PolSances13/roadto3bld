@@ -1,0 +1,2832 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Pol Sances Guirao" />
+  <meta name="dcterms.date" content="2023-01-01" />
+  <title>TUTORIAL DE 3BLD</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+      font-family: Arial, Helvetica, sans-serif;
+      
+    }
+    body {
+      margin: 0 auto;
+      max-width: 50em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+      text-align: justify;
+
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      margin: auto;
+    }
+    figcaption{
+      text-align: center;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    h6 {
+      font-weight: normal;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em auto;
+      border-collapse: collapse;
+      width: auto;
+      overflow-x: none;
+      font-variant-numeric: lining-nums tabular-nums;
+      border: 1px solid #1a1a1a;
+    }
+
+    table caption {
+      margin-bottom: 0.75em;
+    }
+
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    th, td {
+      border: 1px solid #1a1a1a;
+    }
+
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"><strong>TUTORIAL DE 3BLD</strong></h1>
+<p class="author">Pol Sances Guirao</p>
+<p class="date">2023</p>
+</header>
+<p>Aquest tutorial està pensat per a persones que ja tenen un domini
+mínim del cub, es recomana que les persones sapiguen fer el cub de Rubik
+ja que facilita molt el procés.</p>
+<h1 id="coses-a-saber-abans-de-començar">Coses a saber abans de
+començar</h1>
+<h2 id="notació-dels-moviments">Notació dels Moviments</h2>
+<p>El cub de rubik es resol gràcies a identificar patrons i executar
+algoritmes que resolen aquests patrons, aquests algoritmes han d’estar
+escrits en alguna part per poder-los memoritzar i per això estaà la
+notació del cub de rubik.<br />
+<br />
+La notació consta de 6 moviments (F,B,R,L,U,D), que correspon a (Front,
+Back, Right, Left, Up, Down) que son les respectives direccions en
+anglés. Per exemple si faig el moviment F gira la cara front la que està
+més propera a la nostra visió, en sentit horari, en canvi si fós F’
+seria antihorari. En les figures següents es mostra una respresentació
+gràfica per a cada capa.<br />
+<br />
+És un concepte difícil d’entendre però de manera simplificada és girar
+la cara en sentit horari i antihorari desde la cara que vulguis. En les
+figures següents es mostra una respresentació gràfica per a cada
+capa.</p>
+<figure>
+<img src="img/cubes/moviment-F.png" style="width:7cm" />
+<figcaption>Exemples de Movimients F y F’</figcaption>
+</figure>
+<figure>
+<img src="img/cubes/moviment-B.png" style="width:7cm" />
+<figcaption>Exemples de Movimients B y B’</figcaption>
+</figure>
+<figure>
+<img src="img/cubes/moviment-R.png" style="width:7cm" />
+<figcaption>Exemples de Movimients R y R’</figcaption>
+</figure>
+<figure>
+<img src="img/cubes/moviment-L.png" style="width:7cm" />
+<figcaption>Exemples de Movimients L y L’</figcaption>
+</figure>
+<figure>
+<img src="img/cubes/moviment-U.png" style="width:7cm" />
+<figcaption>Exemples de Movimients U y U’</figcaption>
+</figure>
+<figure>
+<img src="img/cubes/moviment-F.png" style="width:7cm" />
+<figcaption>Exemples de Movimients D y D’</figcaption>
+</figure>
+<h2 id="interpretar-el-concepte-del-cub">Interpretar el concepte del
+cub</h2>
+<p>La manera correcta d’interpretar el cub és pensar en el funcionament,
+com si el desmuntessis, ja que consta de 12 arestes i 8 cantonades, a
+més a més dels 6 centres que no poden permutar<a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> amb
+cap altra peça ja que només roten.</p>
+<figure id="fig:cub-desmuntat">
+<img src="img/figures/cub-desmontat.jpg" style="width:7cm" />
+<figcaption>Cub Desmuntat</figcaption>
+</figure>
+<h1 id="el-concepte-de-3bld">El Concepte de 3BLD</h1>
+<p>Per començar cal entendre el funcionament d’una resolució de blind,
+primer el cub és barrejat per una persona i el posa dins d’una capsa o
+un cube cover<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a>, després es col·loca a la taula boca
+avall i la persona que l’ha de resoldre es pren el seu temps per
+respirar. Un cop fet això la persona que resol el cub encén el timer i
+destapa el cub, de manera que el temps comença a comptar i es comença a
+memoritzar. Un cop acabada la memorització el que resol el cub es tapa
+els ulls amb un antifaç i comença a resoldre el cub, mentre que una
+persona externa li posa una cartiluna entre el cub i la seva cara per
+evitar trampes i mirar per sota de l’antifaç. Tots aquests passos s’han
+d’executar perfectament per asegurar-se de la resolució compti.</p>
+<figure id="fig:materials-bld">
+<img src="img/figures/materials-bld.jpg" style="width:12cm" />
+<figcaption>Materials necessaris per poder executar blind</figcaption>
+</figure>
+<h2 id="fases-de-la-resolució">Fases de la Resolució</h2>
+<p>Com ja he esmentat a la seccio anterior, completar el cub de Rubik
+amb els ulls tancats, es divideix en dos grans fases, memorització i
+execució. I dins d’aquestes fases hi han diferents procediments per
+poder aconseguir fer-ho correctament.</p>
+<h2 id="memorització">Memorització</h2>
+<p>En aquesta fase com ja ho diu el seu nom has de memoritzar el cub. La
+manera de memoritzar no és la més convencional ja que no memoritzes
+color sinó peces i com que hem d’interpretar el cub com si fossin 20
+peces el que fem es donar-li una lletra per la qual pots identificar a
+cada peça. Fent aquestes conversions has d’arribar a tenir el teu propi
+esquema de lletres, el que utilitzo jo és el de la figura <a
+href="#fig:letter-scheme" data-reference-type="ref"
+data-reference="fig:letter-scheme">3</a>, i el pots agafar com a
+plantilla per fer el teu o directament utilitzar-lo ja que si
+t’acostumes no et limitarà res durant el procés.</p>
+<figure id="fig:letter-scheme">
+<img src="img/figures/letter-scheme.png" style="width:12cm" />
+<figcaption>Esquema de Lletres</figcaption>
+</figure>
+<p>Hi han lletres repetides perquè primer memoritzes arestes i després
+cantonades, aquestes lletres a l’hora de memoritzar-les, no les
+memoritzes a força bruta, sinó que les converteixes en paraules que
+puguis convertir en imatges per poder entrecordar-te. Sembla molt
+complex però no ho és com es pot veure en el següent exemple. Per
+practicar aquesta transformació d’imatges pots anar a la pàgina web <a
+href="https://polsances13.github.io/roadto3bld/App.Html">roadto3bld</a>
+on podràs veure el codi de la app i on hi haurà un link a github on
+podràs descarregar i utilitzar l’app.</p>
+<p><span class="math display">\[\textrm{Haig de memoritzar les lletres R
+i B    }  \rightarrow \textrm{   RedBull}\]</span> <span
+class="math display">\[\textrm{Haig de memoritzar les lletres A i
+C   }  \rightarrow \textrm{   Aire Acondicionat (AC és el
+símbol)}\]</span></p>
+<p>Llavors has de tenir per a cada parell de lletres una paraula clau
+per memoritzarles ràpidament. Et pots inspirar en les d’algú, com les
+meves de les taules al final del document, però aquestes si que no les
+hauries de copiar, ja que aquestes paraules han de ser les que primer et
+vinguin al cap pensant en les dues lletres, és un treball una mica pesat
+però amb el temps dona el seu fruit. No hi ha secret per integrar
+aquestes paraules a la teva ment, el que has de fer és practicar,
+practicar i practicar, i amb el temps et sortirà sol.</p>
+<div id="tla:lletres-1">
+<table>
+<caption>Taula de Parells de Lletres AA CV</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">AA</th>
+<th style="text-align: left;">AA</th>
+<th style="text-align: left;">BL</th>
+<th style="text-align: left;">BL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AB</td>
+<td style="text-align: left;">ABS</td>
+<td style="text-align: left;">BM</td>
+<td style="text-align: left;">BM (spam)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AC</td>
+<td style="text-align: left;">Aire Acondicionat</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BiNari</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AD</td>
+<td style="text-align: left;">AD (Anunci)</td>
+<td style="text-align: left;">BO</td>
+<td style="text-align: left;">BOB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AE</td>
+<td style="text-align: left;">Aero</td>
+<td style="text-align: left;">BP</td>
+<td style="text-align: left;">BP (gasolinera)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AF</td>
+<td style="text-align: left;">AFRO</td>
+<td style="text-align: left;">BQ</td>
+<td style="text-align: left;">BQ (marca de mòbils)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AG</td>
+<td style="text-align: left;">AG (PLATA)</td>
+<td style="text-align: left;">BR</td>
+<td style="text-align: left;">BRR (so)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AH</td>
+<td style="text-align: left;">AHORA</td>
+<td style="text-align: left;">BS</td>
+<td style="text-align: left;">BS (abreviació de text)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AI</td>
+<td style="text-align: left;">AI (Onomatopeia)</td>
+<td style="text-align: left;">BT</td>
+<td style="text-align: left;">BlueTooth</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AJ</td>
+<td style="text-align: left;">AJO</td>
+<td style="text-align: left;">BU</td>
+<td style="text-align: left;">BU (so)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AK</td>
+<td style="text-align: left;">AK-47</td>
+<td style="text-align: left;">BV</td>
+<td style="text-align: left;">BBVA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AL</td>
+<td style="text-align: left;">ALUMINI</td>
+<td style="text-align: left;">BW</td>
+<td style="text-align: left;">BBW (brake by wire)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">BX</td>
+<td style="text-align: left;">BoX</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AN</td>
+<td style="text-align: left;">AN</td>
+<td style="text-align: left;">CA</td>
+<td style="text-align: left;">Catalunya</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AO</td>
+<td style="text-align: left;">AVERAGE OF</td>
+<td style="text-align: left;">CB</td>
+<td style="text-align: left;">CB (defensa central)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AP</td>
+<td style="text-align: left;">APP</td>
+<td style="text-align: left;">CC</td>
+<td style="text-align: left;">CC (correu)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AQ</td>
+<td style="text-align: left;">AQuaman</td>
+<td style="text-align: left;">CD</td>
+<td style="text-align: left;">CD</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AR</td>
+<td style="text-align: left;">AR SPEEDCUBER</td>
+<td style="text-align: left;">CE</td>
+<td style="text-align: left;">CEo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AS</td>
+<td style="text-align: left;">AS</td>
+<td style="text-align: left;">CF</td>
+<td style="text-align: left;">CoFre</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AT</td>
+<td style="text-align: left;">AlphaTauri</td>
+<td style="text-align: left;">CG</td>
+<td style="text-align: left;">Centre de Gravetat</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AU</td>
+<td style="text-align: left;">AU (Onomatopeia)</td>
+<td style="text-align: left;">CH</td>
+<td style="text-align: left;">CHili</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AV</td>
+<td style="text-align: left;">AVE</td>
+<td style="text-align: left;">CI</td>
+<td style="text-align: left;">CI (compl indirecte)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AW</td>
+<td style="text-align: left;">AWard</td>
+<td style="text-align: left;">CJ</td>
+<td style="text-align: left;">CJ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AX</td>
+<td style="text-align: left;">AXE</td>
+<td style="text-align: left;">CK</td>
+<td style="text-align: left;">CooK</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BA</td>
+<td style="text-align: left;">BALA</td>
+<td style="text-align: left;">CL</td>
+<td style="text-align: left;">ClocK</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BB</td>
+<td style="text-align: left;">BEBÉ</td>
+<td style="text-align: left;">CM</td>
+<td style="text-align: left;">Càmera</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BC</td>
+<td style="text-align: left;">BC (Before Christ)</td>
+<td style="text-align: left;">CN</td>
+<td style="text-align: left;">CN (compl nom)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BD</td>
+<td style="text-align: left;">BuD</td>
+<td style="text-align: left;">CO</td>
+<td style="text-align: left;">CO (companyia)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BE</td>
+<td style="text-align: left;">Bed</td>
+<td style="text-align: left;">CP</td>
+<td style="text-align: left;">Codi Postal</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BF</td>
+<td style="text-align: left;">BFF</td>
+<td style="text-align: left;">CQ</td>
+<td style="text-align: left;">CaQui</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BG</td>
+<td style="text-align: left;">BackGround</td>
+<td style="text-align: left;">CR</td>
+<td style="text-align: left;">CR (continental record)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BH</td>
+<td style="text-align: left;">BH (BICICLETES)</td>
+<td style="text-align: left;">CS</td>
+<td style="text-align: left;">CS (computer science)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">CT</td>
+<td style="text-align: left;">CTT</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BJ</td>
+<td style="text-align: left;">BeiJing</td>
+<td style="text-align: left;">CU</td>
+<td style="text-align: left;">CUb</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BK</td>
+<td style="text-align: left;">BreaK</td>
+<td style="text-align: left;">CV</td>
+<td style="text-align: left;">CV (curric.vitae)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tla:lletres-2">
+<table>
+<caption>Taula de Parells de Lletres CW FT</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">CW</th>
+<th style="text-align: left;">CoW</th>
+<th style="text-align: left;">EJ</th>
+<th style="text-align: left;">EJect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CX</td>
+<td style="text-align: left;">CX (Citroen)</td>
+<td style="text-align: left;">EK</td>
+<td style="text-align: left;">EKA (mètode)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DA</td>
+<td style="text-align: left;">DA (sí en Rus)</td>
+<td style="text-align: left;">EL</td>
+<td style="text-align: left;">EL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DB</td>
+<td style="text-align: left;">DataBase</td>
+<td style="text-align: left;">EM</td>
+<td style="text-align: left;">Eminem</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DC</td>
+<td style="text-align: left;">DC (Distr of C)</td>
+<td style="text-align: left;">EN</td>
+<td style="text-align: left;">EN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DD</td>
+<td style="text-align: left;">DoDo</td>
+<td style="text-align: left;">EO</td>
+<td style="text-align: left;">EO (edge orientation)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">EP</td>
+<td style="text-align: left;">EP</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DF</td>
+<td style="text-align: left;">Districte Federal</td>
+<td style="text-align: left;">EQ</td>
+<td style="text-align: left;">EquiP</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DG</td>
+<td style="text-align: left;">DoG</td>
+<td style="text-align: left;">ER</td>
+<td style="text-align: left;">ER (European record)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DH</td>
+<td style="text-align: left;">DHl</td>
+<td style="text-align: left;">ES</td>
+<td style="text-align: left;">Espanya</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DI</td>
+<td style="text-align: left;">DIA</td>
+<td style="text-align: left;">ET</td>
+<td style="text-align: left;">ET</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DJ</td>
+<td style="text-align: left;">DJ</td>
+<td style="text-align: left;">EU</td>
+<td style="text-align: left;">Estats Units</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DK</td>
+<td style="text-align: left;">Donkey Kong</td>
+<td style="text-align: left;">EV</td>
+<td style="text-align: left;">EVO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DL</td>
+<td style="text-align: left;">DòLar</td>
+<td style="text-align: left;">EW</td>
+<td style="text-align: left;">EW (so)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DM</td>
+<td style="text-align: left;">DuMb</td>
+<td style="text-align: left;">EX</td>
+<td style="text-align: left;">EX</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DN</td>
+<td style="text-align: left;">DaN</td>
+<td style="text-align: left;">FA</td>
+<td style="text-align: left;">Fa (nota musical)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DO</td>
+<td style="text-align: left;">DO (nota musical)</td>
+<td style="text-align: left;">FB</td>
+<td style="text-align: left;">FaceBook</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DP</td>
+<td style="text-align: left;">DP (empresa)</td>
+<td style="text-align: left;">FC</td>
+<td style="text-align: left;">FC (futbol club)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DQ</td>
+<td style="text-align: left;">DsQ</td>
+<td style="text-align: left;">FD</td>
+<td style="text-align: left;">Feed</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DR</td>
+<td style="text-align: left;">Domino Reduction</td>
+<td style="text-align: left;">FE</td>
+<td style="text-align: left;">FE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DS</td>
+<td style="text-align: left;">DS (Nintendo)</td>
+<td style="text-align: left;">FF</td>
+<td style="text-align: left;">ForceFeedback</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DT</td>
+<td style="text-align: left;">DoT</td>
+<td style="text-align: left;">FG</td>
+<td style="text-align: left;">FueGo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DU</td>
+<td style="text-align: left;">DUo</td>
+<td style="text-align: left;">FH</td>
+<td style="text-align: left;">FarenHeit</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DV</td>
+<td style="text-align: left;">DaVid</td>
+<td style="text-align: left;">FI</td>
+<td style="text-align: left;">FInlandia</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DW</td>
+<td style="text-align: left;">DeU</td>
+<td style="text-align: left;">FJ</td>
+<td style="text-align: left;">FiJi</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DX</td>
+<td style="text-align: left;">DuX</td>
+<td style="text-align: left;">FK</td>
+<td style="text-align: left;">FaKe</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">EA</td>
+<td style="text-align: left;">EA (empresa)</td>
+<td style="text-align: left;">FL</td>
+<td style="text-align: left;">FLuid</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">EB</td>
+<td style="text-align: left;">EB (Buggati)</td>
+<td style="text-align: left;">FM</td>
+<td style="text-align: left;">FM (radio)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">EC</td>
+<td style="text-align: left;">ECo</td>
+<td style="text-align: left;">FN</td>
+<td style="text-align: left;">FortNite</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ED</td>
+<td style="text-align: left;">Educació</td>
+<td style="text-align: left;">FO</td>
+<td style="text-align: left;">FOca</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">EE</td>
+<td style="text-align: left;">EE (so)</td>
+<td style="text-align: left;">FP</td>
+<td style="text-align: left;">FP</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">EF</td>
+<td style="text-align: left;">EFecte</td>
+<td style="text-align: left;">FQ</td>
+<td style="text-align: left;">FaQ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">EG</td>
+<td style="text-align: left;">EG (mètode)</td>
+<td style="text-align: left;">FR</td>
+<td style="text-align: left;">FRança</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">EH</td>
+<td style="text-align: left;">EH (so)</td>
+<td style="text-align: left;">FS</td>
+<td style="text-align: left;">For Speed</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">EI</td>
+<td style="text-align: left;">Einstein</td>
+<td style="text-align: left;">FT</td>
+<td style="text-align: left;">Foto</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tla:lletres-3">
+<table>
+<caption>Taula de Parells de Lletres FU IR</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">FU</th>
+<th style="text-align: left;">FUm</th>
+<th style="text-align: left;">HH</th>
+<th style="text-align: left;">Hula Hop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">FV</td>
+<td style="text-align: left;">FiVerr</td>
+<td style="text-align: left;">HI</td>
+<td style="text-align: left;">HIppie</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FW</td>
+<td style="text-align: left;">ForWard</td>
+<td style="text-align: left;">HJ</td>
+<td style="text-align: left;">HiJo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FX</td>
+<td style="text-align: left;">FaX</td>
+<td style="text-align: left;">HK</td>
+<td style="text-align: left;">Honk Kong</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GA</td>
+<td style="text-align: left;">GA (perm)</td>
+<td style="text-align: left;">HL</td>
+<td style="text-align: left;">HaLo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GB</td>
+<td style="text-align: left;">GB (perm)</td>
+<td style="text-align: left;">HM</td>
+<td style="text-align: left;">HuM</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GC</td>
+<td style="text-align: left;">GC (perm)</td>
+<td style="text-align: left;">HN</td>
+<td style="text-align: left;">HaN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GD</td>
+<td style="text-align: left;">GoD</td>
+<td style="text-align: left;">HO</td>
+<td style="text-align: left;">Ho Ho</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GE</td>
+<td style="text-align: left;">GEl</td>
+<td style="text-align: left;">HP</td>
+<td style="text-align: left;">HP (marca)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GF</td>
+<td style="text-align: left;">GiF</td>
+<td style="text-align: left;">HQ</td>
+<td style="text-align: left;">High Quality</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GG</td>
+<td style="text-align: left;">GG</td>
+<td style="text-align: left;">HR</td>
+<td style="text-align: left;">Heart Rate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GH</td>
+<td style="text-align: left;">GraHam</td>
+<td style="text-align: left;">HS</td>
+<td style="text-align: left;">High School</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GI</td>
+<td style="text-align: left;">GIrona</td>
+<td style="text-align: left;">HT</td>
+<td style="text-align: left;">HoT</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GJ</td>
+<td style="text-align: left;">Good Job</td>
+<td style="text-align: left;">HU</td>
+<td style="text-align: left;">HUngary</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GK</td>
+<td style="text-align: left;">GoKu</td>
+<td style="text-align: left;">HV</td>
+<td style="text-align: left;">HaVe</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GL</td>
+<td style="text-align: left;">GL</td>
+<td style="text-align: left;">HW</td>
+<td style="text-align: left;">HomeWork</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GM</td>
+<td style="text-align: left;">Grand Master</td>
+<td style="text-align: left;">HX</td>
+<td style="text-align: left;">HeXA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GN</td>
+<td style="text-align: left;">GaN</td>
+<td style="text-align: left;">IA</td>
+<td style="text-align: left;">IA (chatgpt)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GO</td>
+<td style="text-align: left;">GO</td>
+<td style="text-align: left;">IB</td>
+<td style="text-align: left;">IBai</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GP</td>
+<td style="text-align: left;">Gran Premi</td>
+<td style="text-align: left;">IC</td>
+<td style="text-align: left;">ICono</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GQ</td>
+<td style="text-align: left;">GRAN QUESO</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">ID</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GR</td>
+<td style="text-align: left;">Grup</td>
+<td style="text-align: left;">IE</td>
+<td style="text-align: left;">Internet Explorer</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GS</td>
+<td style="text-align: left;">GaS</td>
+<td style="text-align: left;">IF</td>
+<td style="text-align: left;">IF (condicional)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GT</td>
+<td style="text-align: left;">Gran Turismo</td>
+<td style="text-align: left;">IG</td>
+<td style="text-align: left;">InstaGram</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GU</td>
+<td style="text-align: left;">GUI</td>
+<td style="text-align: left;">IH</td>
+<td style="text-align: left;">IdaHo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GV</td>
+<td style="text-align: left;">GraVa</td>
+<td style="text-align: left;">II</td>
+<td style="text-align: left;">HawaII</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GW</td>
+<td style="text-align: left;">Glow</td>
+<td style="text-align: left;">IJ</td>
+<td style="text-align: left;">Injust</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GX</td>
+<td style="text-align: left;">GX (opera GX)</td>
+<td style="text-align: left;">IK</td>
+<td style="text-align: left;">IKea</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HA</td>
+<td style="text-align: left;">HAHA</td>
+<td style="text-align: left;">IL</td>
+<td style="text-align: left;">ILL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HB</td>
+<td style="text-align: left;">HB (llapis)</td>
+<td style="text-align: left;">IM</td>
+<td style="text-align: left;">International Master</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HC</td>
+<td style="text-align: left;">HeliCòpter</td>
+<td style="text-align: left;">IN</td>
+<td style="text-align: left;">IN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HD</td>
+<td style="text-align: left;">HD (resolució)</td>
+<td style="text-align: left;">IO</td>
+<td style="text-align: left;">IÓ (química)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HE</td>
+<td style="text-align: left;">HE (pronom)</td>
+<td style="text-align: left;">IP</td>
+<td style="text-align: left;">IP</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HF</td>
+<td style="text-align: left;">HiFi</td>
+<td style="text-align: left;">IQ</td>
+<td style="text-align: left;">IQ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HG</td>
+<td style="text-align: left;">HuG</td>
+<td style="text-align: left;">IR</td>
+<td style="text-align: left;">InfraRoig</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tla:lletres-4">
+<table>
+<caption>Taula de Parells de Lletres IS LP</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">IS</th>
+<th style="text-align: left;">ISs</th>
+<th style="text-align: left;">KF</th>
+<th style="text-align: left;">KFc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">IT</td>
+<td style="text-align: left;">ITalia</td>
+<td style="text-align: left;">KG</td>
+<td style="text-align: left;">KiloGram</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IU</td>
+<td style="text-align: left;">InUiT</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">Kevin Hays</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IV</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">KI</td>
+<td style="text-align: left;">Kit</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IW</td>
+<td style="text-align: left;">IntervieW</td>
+<td style="text-align: left;">KJ</td>
+<td style="text-align: left;">KiloJoule</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IX</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">KK</td>
+<td style="text-align: left;">KK</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JA</td>
+<td style="text-align: left;">JA (perm)</td>
+<td style="text-align: left;">KL</td>
+<td style="text-align: left;">Kuala Lumpur</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JB</td>
+<td style="text-align: left;">JB (perm)</td>
+<td style="text-align: left;">KM</td>
+<td style="text-align: left;">KilòMetre</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JC</td>
+<td style="text-align: left;">JaCuzzi</td>
+<td style="text-align: left;">KN</td>
+<td style="text-align: left;">KeNtucky</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JD</td>
+<td style="text-align: left;">JD (sports)</td>
+<td style="text-align: left;">KO</td>
+<td style="text-align: left;">KOi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JE</td>
+<td style="text-align: left;">JErry</td>
+<td style="text-align: left;">KP</td>
+<td style="text-align: left;">KaPPa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JF</td>
+<td style="text-align: left;">JeFF</td>
+<td style="text-align: left;">KQ</td>
+<td style="text-align: left;">KaQui</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JG</td>
+<td style="text-align: left;">Jaguar</td>
+<td style="text-align: left;">KR</td>
+<td style="text-align: left;">Korea</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JH</td>
+<td style="text-align: left;">JoHn</td>
+<td style="text-align: left;">KS</td>
+<td style="text-align: left;">KiSs (grup)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JI</td>
+<td style="text-align: left;">JedI</td>
+<td style="text-align: left;">KT</td>
+<td style="text-align: left;">KaTana</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JJ</td>
+<td style="text-align: left;">JJ</td>
+<td style="text-align: left;">KU</td>
+<td style="text-align: left;">KUwait</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JK</td>
+<td style="text-align: left;">JoKer</td>
+<td style="text-align: left;">KV</td>
+<td style="text-align: left;">KeVin</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JL</td>
+<td style="text-align: left;">JuLiol</td>
+<td style="text-align: left;">KW</td>
+<td style="text-align: left;">KiWi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JM</td>
+<td style="text-align: left;">JaM</td>
+<td style="text-align: left;">KX</td>
+<td style="text-align: left;">KlineX</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JN</td>
+<td style="text-align: left;">JaN</td>
+<td style="text-align: left;">LA</td>
+<td style="text-align: left;">Los Ángeles</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JO</td>
+<td style="text-align: left;">JOe</td>
+<td style="text-align: left;">LB</td>
+<td style="text-align: left;">Left Back</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JP</td>
+<td style="text-align: left;">JP</td>
+<td style="text-align: left;">LC</td>
+<td style="text-align: left;">LuCk</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JQ</td>
+<td style="text-align: left;">JQuery</td>
+<td style="text-align: left;">LD</td>
+<td style="text-align: left;">Lateral Dret</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JR</td>
+<td style="text-align: left;">JunioR</td>
+<td style="text-align: left;">LE</td>
+<td style="text-align: left;">LE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JS</td>
+<td style="text-align: left;">JeSús</td>
+<td style="text-align: left;">LF</td>
+<td style="text-align: left;">LeaF</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JT</td>
+<td style="text-align: left;">JeT</td>
+<td style="text-align: left;">LG</td>
+<td style="text-align: left;">LG (marca)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JU</td>
+<td style="text-align: left;">JUny</td>
+<td style="text-align: left;">LH</td>
+<td style="text-align: left;">Lewis Hamilton</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JV</td>
+<td style="text-align: left;">Java</td>
+<td style="text-align: left;">LI</td>
+<td style="text-align: left;">LI</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JW</td>
+<td style="text-align: left;">JeW</td>
+<td style="text-align: left;">LJ</td>
+<td style="text-align: left;">LumberJack</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JX</td>
+<td style="text-align: left;">JinX</td>
+<td style="text-align: left;">LK</td>
+<td style="text-align: left;">LiKe</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">KA</td>
+<td style="text-align: left;">KaYak</td>
+<td style="text-align: left;">LL</td>
+<td style="text-align: left;">LLimona</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">KB</td>
+<td style="text-align: left;">KirBy</td>
+<td style="text-align: left;">LM</td>
+<td style="text-align: left;">Lichess Master</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">KC</td>
+<td style="text-align: left;">KC</td>
+<td style="text-align: left;">LN</td>
+<td style="text-align: left;">Lando Norris</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">KD</td>
+<td style="text-align: left;">KD (nba)</td>
+<td style="text-align: left;">LO</td>
+<td style="text-align: left;">Lo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">KE</td>
+<td style="text-align: left;">KEy</td>
+<td style="text-align: left;">LP</td>
+<td style="text-align: left;">LuPa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tla:lletres-5">
+<table>
+<caption>Taula de Parells de Lletres LQ ON</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">LQ</th>
+<th style="text-align: left;">LoQuendo</th>
+<th style="text-align: left;">ND</th>
+<th style="text-align: left;">NaDa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">LR</td>
+<td style="text-align: left;">Left-Right</td>
+<td style="text-align: left;">NE</td>
+<td style="text-align: left;">NEo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LS</td>
+<td style="text-align: left;">LàSer</td>
+<td style="text-align: left;">NF</td>
+<td style="text-align: left;">NeFast</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LT</td>
+<td style="text-align: left;">LiT</td>
+<td style="text-align: left;">NG</td>
+<td style="text-align: left;">Negre</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LU</td>
+<td style="text-align: left;">LU</td>
+<td style="text-align: left;">NH</td>
+<td style="text-align: left;">Nothing</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LV</td>
+<td style="text-align: left;">LaVa</td>
+<td style="text-align: left;">NI</td>
+<td style="text-align: left;">NInja</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LW</td>
+<td style="text-align: left;">LoW</td>
+<td style="text-align: left;">NJ</td>
+<td style="text-align: left;">NíJar</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LX</td>
+<td style="text-align: left;">LateX</td>
+<td style="text-align: left;">NK</td>
+<td style="text-align: left;">NoKia</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MA</td>
+<td style="text-align: left;">MAma</td>
+<td style="text-align: left;">NL</td>
+<td style="text-align: left;">NetherLands</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MB</td>
+<td style="text-align: left;">MBappé</td>
+<td style="text-align: left;">NM</td>
+<td style="text-align: left;">NeMo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MC</td>
+<td style="text-align: left;">MigCampista</td>
+<td style="text-align: left;">NN</td>
+<td style="text-align: left;">NN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MD</td>
+<td style="text-align: left;">MD (missatge)</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;">NO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ME</td>
+<td style="text-align: left;">MEme</td>
+<td style="text-align: left;">NP</td>
+<td style="text-align: left;">NPc</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MF</td>
+<td style="text-align: left;">MaFia</td>
+<td style="text-align: left;">NQ</td>
+<td style="text-align: left;">NesQuick</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MG</td>
+<td style="text-align: left;">MaGnesi</td>
+<td style="text-align: left;">NR</td>
+<td style="text-align: left;">NR (National Record)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MH</td>
+<td style="text-align: left;">MoHa</td>
+<td style="text-align: left;">NS</td>
+<td style="text-align: left;">No-Sé</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MI</td>
+<td style="text-align: left;">MI</td>
+<td style="text-align: left;">NT</td>
+<td style="text-align: left;">NATA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MJ</td>
+<td style="text-align: left;">Michael Jordan</td>
+<td style="text-align: left;">NU</td>
+<td style="text-align: left;">NUt</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MK</td>
+<td style="text-align: left;">MK</td>
+<td style="text-align: left;">NV</td>
+<td style="text-align: left;">November</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ML</td>
+<td style="text-align: left;">MaiL</td>
+<td style="text-align: left;">NW</td>
+<td style="text-align: left;">NeWs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MM</td>
+<td style="text-align: left;">MaMut</td>
+<td style="text-align: left;">NX</td>
+<td style="text-align: left;">NeXt</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MN</td>
+<td style="text-align: left;">MaNia</td>
+<td style="text-align: left;">OA</td>
+<td style="text-align: left;">OAk (tronc)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MO</td>
+<td style="text-align: left;">MO</td>
+<td style="text-align: left;">OB</td>
+<td style="text-align: left;">OBama</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MP</td>
+<td style="text-align: left;">Max ParK</td>
+<td style="text-align: left;">OC</td>
+<td style="text-align: left;">Oceania</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MQ</td>
+<td style="text-align: left;">MaQueta</td>
+<td style="text-align: left;">OD</td>
+<td style="text-align: left;">ODD</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MR</td>
+<td style="text-align: left;">MisteR</td>
+<td style="text-align: left;">OE</td>
+<td style="text-align: left;">OEm</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MS</td>
+<td style="text-align: left;">MeSSi</td>
+<td style="text-align: left;">OF</td>
+<td style="text-align: left;">OFICINA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MT</td>
+<td style="text-align: left;">MiT</td>
+<td style="text-align: left;">OG</td>
+<td style="text-align: left;">OG</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MU</td>
+<td style="text-align: left;">MUU</td>
+<td style="text-align: left;">OH</td>
+<td style="text-align: left;">One Handed</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MV</td>
+<td style="text-align: left;">MagleV</td>
+<td style="text-align: left;">OI</td>
+<td style="text-align: left;">OI</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MW</td>
+<td style="text-align: left;">MicroWave</td>
+<td style="text-align: left;">OJ</td>
+<td style="text-align: left;">OJO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MX</td>
+<td style="text-align: left;">MèXic</td>
+<td style="text-align: left;">OK</td>
+<td style="text-align: left;">OK</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Na (perm)</td>
+<td style="text-align: left;">OL</td>
+<td style="text-align: left;">Olímpic</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NB</td>
+<td style="text-align: left;">NBa</td>
+<td style="text-align: left;">OM</td>
+<td style="text-align: left;">OMAR</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NC</td>
+<td style="text-align: left;">NiCe</td>
+<td style="text-align: left;">ON</td>
+<td style="text-align: left;">ON</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tla:lletres-6">
+<table>
+<caption>Taula de Parells de Lletres OO RM</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">OO</th>
+<th style="text-align: left;">OO</th>
+<th style="text-align: left;">QB</th>
+<th style="text-align: left;">QuarterBack</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">OP</td>
+<td style="text-align: left;">Old Pochmann</td>
+<td style="text-align: left;">QC</td>
+<td style="text-align: left;">QualComm</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OQ</td>
+<td style="text-align: left;">ORQUESTA</td>
+<td style="text-align: left;">QD</td>
+<td style="text-align: left;">QuaD</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OR</td>
+<td style="text-align: left;">Olimpic Record</td>
+<td style="text-align: left;">QE</td>
+<td style="text-align: left;">QuE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OS</td>
+<td style="text-align: left;">OS (sistema operatiu)</td>
+<td style="text-align: left;">QF</td>
+<td style="text-align: left;">QuiròFan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OT</td>
+<td style="text-align: left;">OT</td>
+<td style="text-align: left;">QG</td>
+<td style="text-align: left;">QuirúrGic</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OU</td>
+<td style="text-align: left;">OU</td>
+<td style="text-align: left;">QH</td>
+<td style="text-align: left;">sQuasH</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OV</td>
+<td style="text-align: left;">OVni</td>
+<td style="text-align: left;">QI</td>
+<td style="text-align: left;">QuI</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OW</td>
+<td style="text-align: left;">OW</td>
+<td style="text-align: left;">QJ</td>
+<td style="text-align: left;">QuiJote</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OX</td>
+<td style="text-align: left;">OXígen</td>
+<td style="text-align: left;">QK</td>
+<td style="text-align: left;">QuaKer</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PA</td>
+<td style="text-align: left;">PA</td>
+<td style="text-align: left;">QL</td>
+<td style="text-align: left;">Quality</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PB</td>
+<td style="text-align: left;">PB (Personal Best)</td>
+<td style="text-align: left;">QM</td>
+<td style="text-align: left;">QuantuM</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PC</td>
+<td style="text-align: left;">PC</td>
+<td style="text-align: left;">QN</td>
+<td style="text-align: left;">QuaN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PD</td>
+<td style="text-align: left;">Post Data</td>
+<td style="text-align: left;">QO</td>
+<td style="text-align: left;">QuOte</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PE</td>
+<td style="text-align: left;">PE</td>
+<td style="text-align: left;">QP</td>
+<td style="text-align: left;">eQuiP</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PF</td>
+<td style="text-align: left;">PFI</td>
+<td style="text-align: left;">QQ</td>
+<td style="text-align: left;">QQ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PG</td>
+<td style="text-align: left;">PGa (Golf)</td>
+<td style="text-align: left;">QR</td>
+<td style="text-align: left;">QR (Codi)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PH (àcid)</td>
+<td style="text-align: left;">QS</td>
+<td style="text-align: left;">QuickSilver</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PI</td>
+<td style="text-align: left;">PI (π)</td>
+<td style="text-align: left;">QT</td>
+<td style="text-align: left;">QuarenTena</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PJ</td>
+<td style="text-align: left;">PiJama</td>
+<td style="text-align: left;">QU</td>
+<td style="text-align: left;">QU</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PK</td>
+<td style="text-align: left;">PeKKA</td>
+<td style="text-align: left;">QV</td>
+<td style="text-align: left;">eQuiVocar</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PL</td>
+<td style="text-align: left;">PoLand</td>
+<td style="text-align: left;">QW</td>
+<td style="text-align: left;">QWerty</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PM</td>
+<td style="text-align: left;">PM (hora)</td>
+<td style="text-align: left;">RA</td>
+<td style="text-align: left;">RA (perm)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PN</td>
+<td style="text-align: left;">PeN</td>
+<td style="text-align: left;">RB</td>
+<td style="text-align: left;">RedBull</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PO</td>
+<td style="text-align: left;">POl</td>
+<td style="text-align: left;">RC</td>
+<td style="text-align: left;">Radio Control</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PP</td>
+<td style="text-align: left;">PP</td>
+<td style="text-align: left;">RD</td>
+<td style="text-align: left;">RD (País)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PQ</td>
+<td style="text-align: left;">Pecús</td>
+<td style="text-align: left;">RE</td>
+<td style="text-align: left;">REd</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PR</td>
+<td style="text-align: left;">PR (Personal Record)</td>
+<td style="text-align: left;">RF</td>
+<td style="text-align: left;">RaFa</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PS</td>
+<td style="text-align: left;">PlayStation</td>
+<td style="text-align: left;">RG</td>
+<td style="text-align: left;">NRG</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PT</td>
+<td style="text-align: left;">PorTugal</td>
+<td style="text-align: left;">RH</td>
+<td style="text-align: left;">RuiHang</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PU</td>
+<td style="text-align: left;">PUma</td>
+<td style="text-align: left;">RI</td>
+<td style="text-align: left;">RIu</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PV</td>
+<td style="text-align: left;">PVc</td>
+<td style="text-align: left;">RJ</td>
+<td style="text-align: left;">RJ-44 (ethernet)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PW</td>
+<td style="text-align: left;">PoWer</td>
+<td style="text-align: left;">RK</td>
+<td style="text-align: left;">RocK</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PX</td>
+<td style="text-align: left;">PiXel</td>
+<td style="text-align: left;">RL</td>
+<td style="text-align: left;">Rocket League</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QA</td>
+<td style="text-align: left;">QAtar</td>
+<td style="text-align: left;">RM</td>
+<td style="text-align: left;">RaM (cotxe)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tla:lletres-7">
+<table>
+<caption>Taula de Parells de Lletres RN UK</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">RN</th>
+<th style="text-align: left;">Right now</th>
+<th style="text-align: left;">TA</th>
+<th style="text-align: left;">TATA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">RO</td>
+<td style="text-align: left;">ROda</td>
+<td style="text-align: left;">TB</td>
+<td style="text-align: left;">TaBleT</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RP</td>
+<td style="text-align: left;">RaP</td>
+<td style="text-align: left;">TC</td>
+<td style="text-align: left;">TC (Traction Control)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RQ</td>
+<td style="text-align: left;">RaQueta</td>
+<td style="text-align: left;">TD</td>
+<td style="text-align: left;">TeD</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RR</td>
+<td style="text-align: left;">RaRo</td>
+<td style="text-align: left;">TE</td>
+<td style="text-align: left;">TÉ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RS</td>
+<td style="text-align: left;">RS (Rally Sport)</td>
+<td style="text-align: left;">TF</td>
+<td style="text-align: left;">TelèFon</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RT</td>
+<td style="text-align: left;">RT (retweet)</td>
+<td style="text-align: left;">TG</td>
+<td style="text-align: left;">TiGer</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RU</td>
+<td style="text-align: left;">Rusia</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THomb</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RV</td>
+<td style="text-align: left;">RoVer</td>
+<td style="text-align: left;">TI</td>
+<td style="text-align: left;">TI</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RW</td>
+<td style="text-align: left;">RoW</td>
+<td style="text-align: left;">TJ</td>
+<td style="text-align: left;">TaJo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RX</td>
+<td style="text-align: left;">ReX</td>
+<td style="text-align: left;">TK</td>
+<td style="text-align: left;">TicKet</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SA</td>
+<td style="text-align: left;">Sud-Àfrica</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TeLa</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SB</td>
+<td style="text-align: left;">SportBack</td>
+<td style="text-align: left;">TM</td>
+<td style="text-align: left;">TeaM</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SC</td>
+<td style="text-align: left;">SoniC</td>
+<td style="text-align: left;">TN</td>
+<td style="text-align: left;">TNt</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SD</td>
+<td style="text-align: left;">SD (resolució)</td>
+<td style="text-align: left;">TO</td>
+<td style="text-align: left;">TOnelada</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SE</td>
+<td style="text-align: left;">SEa</td>
+<td style="text-align: left;">TP</td>
+<td style="text-align: left;">TP</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SF</td>
+<td style="text-align: left;">SoFà</td>
+<td style="text-align: left;">TQ</td>
+<td style="text-align: left;">TorQue</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SaGa</td>
+<td style="text-align: left;">TR</td>
+<td style="text-align: left;">TRx</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SH</td>
+<td style="text-align: left;">SHHHH</td>
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">TypeScript</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SI</td>
+<td style="text-align: left;">SI</td>
+<td style="text-align: left;">TT</td>
+<td style="text-align: left;">TT</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SJ</td>
+<td style="text-align: left;">SoJa</td>
+<td style="text-align: left;">TU</td>
+<td style="text-align: left;">TU</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SK</td>
+<td style="text-align: left;">SKi</td>
+<td style="text-align: left;">TV</td>
+<td style="text-align: left;">TV</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SL</td>
+<td style="text-align: left;">SL (Societat Limitada)</td>
+<td style="text-align: left;">TW</td>
+<td style="text-align: left;">TWitch</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SM</td>
+<td style="text-align: left;">SM (Editorial)</td>
+<td style="text-align: left;">TX</td>
+<td style="text-align: left;">TaXi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SN</td>
+<td style="text-align: left;">SN (Sense Número)</td>
+<td style="text-align: left;">UA</td>
+<td style="text-align: left;">UA (Uni Autònoma BCN)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SO</td>
+<td style="text-align: left;">SO</td>
+<td style="text-align: left;">UB</td>
+<td style="text-align: left;">UB (Uni BCN)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SP</td>
+<td style="text-align: left;">SPort</td>
+<td style="text-align: left;">UC</td>
+<td style="text-align: left;">UCrania</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SQ</td>
+<td style="text-align: left;">SQuare</td>
+<td style="text-align: left;">UD</td>
+<td style="text-align: left;">UDemy (cursos)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SR</td>
+<td style="text-align: left;">SR (State Record)</td>
+<td style="text-align: left;">UE</td>
+<td style="text-align: left;">Unió Europea</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SS</td>
+<td style="text-align: left;">SS</td>
+<td style="text-align: left;">UF</td>
+<td style="text-align: left;">UFo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ST</td>
+<td style="text-align: left;">STreet</td>
+<td style="text-align: left;">UG</td>
+<td style="text-align: left;">UdG (Uni Girona)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SU</td>
+<td style="text-align: left;">SUpra</td>
+<td style="text-align: left;">UH</td>
+<td style="text-align: left;">UpHill</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SV</td>
+<td style="text-align: left;">SuV</td>
+<td style="text-align: left;">UI</td>
+<td style="text-align: left;">UI (user interface)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SW</td>
+<td style="text-align: left;">Star Wars</td>
+<td style="text-align: left;">UJ</td>
+<td style="text-align: left;">Utah Jazz</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SX</td>
+<td style="text-align: left;">SaXo (cotxe)</td>
+<td style="text-align: left;">UK</td>
+<td style="text-align: left;">UK (país)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tla:lletres-8">
+<table>
+<caption>Taula de Parells de Lletres UL XI</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">UL</th>
+<th style="text-align: left;">ULtron</th>
+<th style="text-align: left;">VW</th>
+<th style="text-align: left;">VolksWagen</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">UM</td>
+<td style="text-align: left;">fUM</td>
+<td style="text-align: left;">VX</td>
+<td style="text-align: left;">VorteX</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UN</td>
+<td style="text-align: left;">UNo</td>
+<td style="text-align: left;">WA</td>
+<td style="text-align: left;">WAter</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">UO</td>
+<td style="text-align: left;">UndercOver</td>
+<td style="text-align: left;">WB</td>
+<td style="text-align: left;">WeB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UP</td>
+<td style="text-align: left;">Up</td>
+<td style="text-align: left;">WC</td>
+<td style="text-align: left;">WC</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">UQ</td>
+<td style="text-align: left;">UniQue</td>
+<td style="text-align: left;">WD</td>
+<td style="text-align: left;">WD (discos)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UR</td>
+<td style="text-align: left;">URuguai</td>
+<td style="text-align: left;">WE</td>
+<td style="text-align: left;">WWE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">US</td>
+<td style="text-align: left;">US (país)</td>
+<td style="text-align: left;">WF</td>
+<td style="text-align: left;">WiFi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UT</td>
+<td style="text-align: left;">U-Turn</td>
+<td style="text-align: left;">WG</td>
+<td style="text-align: left;">WinG</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">UU</td>
+<td style="text-align: left;">UU</td>
+<td style="text-align: left;">WH</td>
+<td style="text-align: left;">WasH</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UV</td>
+<td style="text-align: left;">UtrolaViolat</td>
+<td style="text-align: left;">WI</td>
+<td style="text-align: left;">WII</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">UW</td>
+<td style="text-align: left;">UW</td>
+<td style="text-align: left;">WJ</td>
+<td style="text-align: left;">WaterJet</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UX</td>
+<td style="text-align: left;">UNIX</td>
+<td style="text-align: left;">WK</td>
+<td style="text-align: left;">WiKipedia</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VA</td>
+<td style="text-align: left;">VA</td>
+<td style="text-align: left;">WL</td>
+<td style="text-align: left;">WiLL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VB</td>
+<td style="text-align: left;">VerB</td>
+<td style="text-align: left;">WM</td>
+<td style="text-align: left;">WRM (cub)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VC</td>
+<td style="text-align: left;">VaCa</td>
+<td style="text-align: left;">WN</td>
+<td style="text-align: left;">WiN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VD</td>
+<td style="text-align: left;">ViDeo</td>
+<td style="text-align: left;">WO</td>
+<td style="text-align: left;">WOOo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VE</td>
+<td style="text-align: left;">VErstappen</td>
+<td style="text-align: left;">WP</td>
+<td style="text-align: left;">WeaPon</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VF</td>
+<td style="text-align: left;">VeriFicar</td>
+<td style="text-align: left;">WQ</td>
+<td style="text-align: left;">WuQue (cub)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VG</td>
+<td style="text-align: left;">VaGo</td>
+<td style="text-align: left;">WR</td>
+<td style="text-align: left;">WR (World Record)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VH</td>
+<td style="text-align: left;">VHS</td>
+<td style="text-align: left;">WS</td>
+<td style="text-align: left;">WhatSapp</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VI</td>
+<td style="text-align: left;">VI</td>
+<td style="text-align: left;">WT</td>
+<td style="text-align: left;">What</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VJ</td>
+<td style="text-align: left;">VaJa</td>
+<td style="text-align: left;">WU</td>
+<td style="text-align: left;">WU</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VK</td>
+<td style="text-align: left;">ValK</td>
+<td style="text-align: left;">WV</td>
+<td style="text-align: left;">WolVerine</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VL</td>
+<td style="text-align: left;">VoLar</td>
+<td style="text-align: left;">WW</td>
+<td style="text-align: left;">WWW</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VM</td>
+<td style="text-align: left;">ViM</td>
+<td style="text-align: left;">WX</td>
+<td style="text-align: left;">WAX</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VaNs</td>
+<td style="text-align: left;">XA</td>
+<td style="text-align: left;">EXamen</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VO</td>
+<td style="text-align: left;">VO (Versió Original)</td>
+<td style="text-align: left;">XB</td>
+<td style="text-align: left;">XBox</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VP</td>
+<td style="text-align: left;">ViP</td>
+<td style="text-align: left;">XC</td>
+<td style="text-align: left;">eXCel</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VQ</td>
+<td style="text-align: left;">VAnQuish</td>
+<td style="text-align: left;">XD</td>
+<td style="text-align: left;">XD</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VR</td>
+<td style="text-align: left;">VR</td>
+<td style="text-align: left;">XE</td>
+<td style="text-align: left;">XEon (intel)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VS</td>
+<td style="text-align: left;">VerSus</td>
+<td style="text-align: left;">XF</td>
+<td style="text-align: left;">XilòFon</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VT</td>
+<td style="text-align: left;">VoT</td>
+<td style="text-align: left;">XG</td>
+<td style="text-align: left;">EXtra Gran</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VU</td>
+<td style="text-align: left;">VUVUzela</td>
+<td style="text-align: left;">XH</td>
+<td style="text-align: left;">EXHalar</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">VV</td>
+<td style="text-align: left;">VàlVula</td>
+<td style="text-align: left;">XI</td>
+<td style="text-align: left;">XI</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tla:lletres-9">
+<table>
+<caption>Taula de Parells de Lletres XJ XX</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">XJ</th>
+<th style="text-align: left;">EXiGir* (So)</th>
+<th style="text-align: left;">XQ</th>
+<th style="text-align: left;">Per Què</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">XK</td>
+<td style="text-align: left;">XK</td>
+<td style="text-align: left;">XR</td>
+<td style="text-align: left;">XR (iphone)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">XL</td>
+<td style="text-align: left;">XL (talla)</td>
+<td style="text-align: left;">XS</td>
+<td style="text-align: left;">XS (iphone)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">XM</td>
+<td style="text-align: left;">X-Men</td>
+<td style="text-align: left;">XT</td>
+<td style="text-align: left;">XTreme</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">XN</td>
+<td style="text-align: left;">Xenó</td>
+<td style="text-align: left;">XU</td>
+<td style="text-align: left;">XU</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">XO</td>
+<td style="text-align: left;">ShO</td>
+<td style="text-align: left;">XV</td>
+<td style="text-align: left;">XaVi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">XP</td>
+<td style="text-align: left;">XP (windows)</td>
+<td style="text-align: left;">XW</td>
+<td style="text-align: left;">XWing</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">XX</td>
+<td style="text-align: left;">XX</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="execució">Execució</h2>
+<p>A diferència de una resolució normal, a l’hora d’executar els
+moviments tu no pots rotar el cub, perquè tens que actuar segons les
+lletres que has memoritzat i si rotes el cub canvies la posició de les
+peces respecte a les lletres indirectament. Per tant només fas moviments
+de les capes. Els algoritmes per intercanviar les peces només
+interfereixen en les lletres que has memoritzat i deixent la resta del
+cub exactament igual quan fas els passos. Per començar a fer el cub has
+d’aprendre el mètode principants que explicaré a la següent secció.
+Durant l’execució se segueix l’ordre CEEC que diu que memoritzes
+cantonades, després arestes, executes arestes i després executes
+cantonades.</p>
+<h1 id="el-mètode-principiants-old-pochmann">El mètode principiants "Old
+Pochmann"</h1>
+<p>El métode principiants o Old Pochmann és un mètode pel qual
+intercanvies les peces que vols una a una, és a dir, que mires la peça
+que primer has memoritzat i la canvies per la peça que està al seu lloc
+i així ja tens una peça que està al seu lloc i una altra que has de
+col·locar, i així succesivament. Aquesta peça sobre la que sempre estàs
+treballant es diu "Buffer".El mètode és el mateix concepte tant per
+arestes com cantonades però el dividirem en dos perquè l’explicació
+sigui més fàcil.</p>
+<h2 id="arestes">Arestes</h2>
+<p>En les arestes el buffer serà la peça BM, (l’aresta blanca-vermella),
+i a l’hora de memoritzar començarem des d’allà. Un cop memoritzat un
+"setup move", que consisteix en un moviment que posa la peça que vols
+intercanviar en el lloc AD, (l’aresta blanca-taronja) i seguit del setup
+move farem l’algoritme d’intercanvi del mètode, després desfarem el
+setup movem executant-lo però a revés.</p>
+<p><span class="math display">\[\textrm{Algortime d&#39;intercanvi}
+\rightarrow \textrm{R U R&#39; U&#39; R&#39; F R2 U&#39; R&#39; U&#39; R
+U R&#39; F&#39;}\]</span></p>
+<p>Els setups moves més òptims per cada peça de les arestes són els
+següents:</p>
+<div id="fig:setup-arestes">
+<table>
+<caption>Setup Moves Arestes</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">Lw2 D’ L2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">buffer</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">Lw2 D L2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">Fer algoritme</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">L Dw’ L</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">Dw’ L</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">G</td>
+<td style="text-align: center;">L’ Dw’ L</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">Dw L’</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">Lw D’ L2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">J</td>
+<td style="text-align: center;">Dw2 L</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">K</td>
+<td style="text-align: center;">Lw D L2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">L</td>
+<td style="text-align: center;">L’</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="fig:setup-arestes">
+<table>
+<caption>Setup Moves Arestes</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">M</th>
+<th style="text-align: center;">buffer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">Dw L</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">D2 L’ Dw’ L</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P</td>
+<td style="text-align: center;">Dw’ L’</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Q</td>
+<td style="text-align: center;">Lw’ D L2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">L</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">Lw’ D’ L2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">Dw2 L’</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">U</td>
+<td style="text-align: center;">D’ L2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">D2 L2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">W</td>
+<td style="text-align: center;">D L2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">L2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="cantonades">Cantonades</h2>
+<p>Per les cantonades és la mateix història (setup move algortime
+d’intercanvi setup move), el que canvia és l’algoritme d’intercanvi i
+que la posició buffer és la AER (cantonada blanca-taronja-blava) i la
+posició d’intercanvi per la qual fem els setup moves és la VKP
+(cantonada groga-verda-vermella).</p>
+<p><span class="math display">\[\textrm{Algortime d&#39;intercanvi}
+\rightarrow \textrm{F R U&#39; R&#39; U&#39; R U R&#39; F&#39; R U
+R&#39; U&#39; R&#39; F R F&#39;}\]</span></p>
+<p>Els setups moves més òptims per cada peça de les cantonades són els
+següents:</p>
+<div id="fig:setup-cantonades">
+<table>
+<caption>Setup Moves Cantonades</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">buffer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">R2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">F2 D</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">F2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">buffer</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F’ D</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">G</td>
+<td style="text-align: center;">F’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">D’ R</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">F R’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">J</td>
+<td style="text-align: center;">R’</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">K</td>
+<td style="text-align: center;">F’ R’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">L</td>
+<td style="text-align: center;">F2 R’</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="fig:setup-cantonades">
+<table>
+<caption>Setup Moves Cantonades</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">M</th>
+<th style="text-align: center;">F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">R’ F</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">R2 F</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P</td>
+<td style="text-align: center;">R F</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Q</td>
+<td style="text-align: center;">R D’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">buffer</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">D F’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">R</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">U</td>
+<td style="text-align: center;">D</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">Fer algoritme</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">W</td>
+<td style="text-align: center;">D’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">D2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="casos-especials">Casos Especials</h2>
+<p>Hi han dos tipus de casos especials que et poden sorgir, un és quan
+estàs memoritzant i et trobes la peça del buffer, en aquest cas
+memoritzes una altra peça que no hagis memoritzat i continues com normal
+perquè automàticament al final et quedara bé. El segonc as especial és
+quan has acabat de memoritzar i et queden nombres imparells d’arestes i
+cantonades memoritzades, llavors el que has de fer, és, entre l’execució
+de les arestes i les cantondes fer l’algoritme de partitat aquest cas i
+contrinuar la resolució de manera normal.</p>
+<p><span class="math display">\[\textrm{Algortime de Paritat}
+\rightarrow \textrm{R U R&#39; F&#39; R U2 R&#39; U2 R&#39; F R U R U2
+R&#39; U&#39; }\]</span></p>
+<h2 id="exemple-de-memorització-per-a-aquest-mètode">Exemple de
+Memorització per a aquest mètode</h2>
+<p><span class="math display">\[\textrm{Barreja:} \rightarrow \textrm{F2
+B R2 U&#39; L2 U2 B&#39; L&#39; F2 U&#39; B2 U L2 U R2 F2 L2 U&#39; L2
+F}\]</span></p>
+<p><span class="math display">\[\textrm{Memorització Arestes}
+\rightarrow \textrm{VP QD CK ER SG HT N}\]</span> <span
+class="math display">\[\textrm{Memorització Cantonades} \rightarrow
+\textrm{UN HV TM C}\]</span></p>
+<figure id="fig:exemple-memo">
+<img src="img/cubes/cub-barrejat.png" style="width:8cm" />
+<figcaption>Cub barrejat per exemple de Memorització</figcaption>
+</figure>
+<h1 id="mètode-intermig-m2orozco">Mètode Intermig (M2/Orozco)</h1>
+<p>El mètode intermig per resoldre el cub a cegues consta del mètode M2
+per les arestes i l’Orozco per les cantonades. El mètode M2, que com ja
+ho diu el seu nom es basa en el moviment M2, que és el moviment de la
+capa del mig del cub 2 vegades, a més a més, el buffer és UK (Aresta
+)</p>
+<figure>
+<img src="img/cubes/m2.png" style="width:5cm" />
+<figcaption>Exemple de Moviment M2</figcaption>
+</figure>
+<p>Aquest mètode intercanvia les peces d’una manera peculiar, ja que ha
+de fer dues vegades M2 per tornar a l’estat original i canviar dues
+peces. Per exemple, fas primer la seqüència Y que col·loca la peça al
+lloc d’intercanvi, després fas la seqüència X que en aquesta cas és M2 i
+després fas Y’ per retornar la peça intercanviada. Un cop fet això s’han
+canviat dues peces però el cub no queda igual que abans perquè hem de
+tornar a fer un intercanvi, aquest segon intercanvi ha de ser amb una
+seqüència Z X Z’ perquè hem d’intercanviar una peça que no sigui la
+mateixa.<br />
+<br />
+Exemple d’intercanvi d’arestes L i V:</p>
+<figure>
+<img src="img/cubes/sec-1.png" style="width:9cm" />
+<figcaption>Secuencia Y (Esquerra) i Y X (Dreta)</figcaption>
+</figure>
+<figure>
+<img src="img/cubes/sec-2.png" style="width:9cm" />
+<figcaption>Secuencia Y X Y’ (Esquerra) i Y X Y’Z (Dreta)</figcaption>
+</figure>
+<figure>
+<img src="img/cubes/sec-3.png" style="width:9cm" />
+<figcaption>Secuencia Y X Y’Z’X (Esquerra) i Y X Y’Z X Z’
+(Dreta)</figcaption>
+</figure>
+<p>Llavors així és com es canviarien dues arestes amb el mètode M2, en
+aquest cas L i V. El mètode té els casos de la taula <a
+href="#fig:taula-m2" data-reference-type="ref"
+data-reference="fig:taula-m2">15</a>.</p>
+<div id="fig:taula-m2">
+<table>
+<caption>Casos del Mètode M2</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">M2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">R’ U R U’ M2 U R’ U’ R</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">U2 M’ U2 M’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">L U’ L’ U M2 U’ L U L’</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">B L’ B’ M2 B L B’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">B L2 B’ M2 B L2 B’</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">G</td>
+<td style="text-align: center;">B L B’ M2 B L’ B’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">L B L’ B’ M2 B L B’ L’</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">D M’ U R2 U’ M U R2 U’ D’ M2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">J</td>
+<td style="text-align: center;">U R U’ M2 U R’ U’</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">K</td>
+<td style="text-align: center;">Posició d’intercanvi</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">L</td>
+<td style="text-align: center;">U’ L’ U M2 U’ L U</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="fig:taula-m2">
+<table>
+<caption>Casos del Mètode M2</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">M</th>
+<th style="text-align: center;">B’ R B M2 B’ R’ B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">R’ B’ R B M2 B’ R’ B R</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">B’ R’ B M2 B’ R B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P</td>
+<td style="text-align: center;">B’ R2 B M2 B’ R2 B</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Q</td>
+<td style="text-align: center;">U B’ R U’ B (M2) B’ U R’ B U’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">U’ L U M2 U’ L’ U</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">M2’ D U R2 U’ M’ U R2 U’ M D’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">U R’ U’ M2 U R U’</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">U</td>
+<td style="text-align: center;">Posició d’intercanvi</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">U R2 U’ M2 U R2 U’</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">W</td>
+<td style="text-align: center;">M U2 M U2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">U’ L2 U M2 U’ L2 U</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="mètode-dexecució-per-les-cantonades">Mètode d’execució per les
+Cantonades</h2>
+<p>El mètode orozco, utlitza un sistema similar al M2, ja que fa les
+seqüències Y X Y’X’ i Z A Z’ A’ però en aquest cas la seqüència Z és
+diferent perquè es troba al segon lloc. De manera simple, si a la
+memorització tens la lletra en segon lloc has de fer l’algoritme
+alternatiu. Els casos d’orozco són els de la taula <a
+href="#fig:taula-orozco" data-reference-type="ref"
+data-reference="fig:taula-orozco">17</a></p>
+<div id="fig:taula-orozco">
+<table>
+<caption>Algorimtes orozco</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>AB</strong></th>
+<th style="text-align: center;">Basic A Perm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>DB</strong></td>
+<td style="text-align: center;">U’ (A Perm) U</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>EB</strong></td>
+<td style="text-align: center;">[R: [R D R’, U]]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>FB</strong></td>
+<td style="text-align: center;">[R’: [U’, R’ D’ R]]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>GB</strong></td>
+<td style="text-align: center;">[U, R’ D R]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>HB</strong></td>
+<td style="text-align: center;">[R D’ R’, U’]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>IB</strong></td>
+<td style="text-align: center;">[R: [R D R’, U2]]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>KB</strong></td>
+<td style="text-align: center;">[D’: [U, R’ D R]]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>LB</strong></td>
+<td style="text-align: center;">[D: [U, R’ D’ R]]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>OB</strong></td>
+<td style="text-align: center;">[R D R’, U’]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>PB</strong></td>
+<td style="text-align: center;">[U, R’ D’ R]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>RB</strong></td>
+<td style="text-align: center;">[R’: [U2, R’ D’ R]]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>SB</strong></td>
+<td style="text-align: center;">[U, R’ D2 R]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>TB</strong></td>
+<td style="text-align: center;">[D: [R D’ R’, U’]]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>UB</strong></td>
+<td style="text-align: center;">[x’: [R U R’, D2]]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>VB</strong></td>
+<td style="text-align: center;">[D’ x’: [R U R’, D2]]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>WB</strong></td>
+<td style="text-align: center;">[D x: [D2, R’ U’ R]]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>XB</strong></td>
+<td style="text-align: center;">[x: [D2, R’ U’ R]]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="fig:taula-orozco">
+<table>
+<caption>Algorimtes orozco</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>BA</strong></th>
+<th style="text-align: center;">Reverse A Perm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>BD</strong></td>
+<td style="text-align: center;">U’ (Reverse A Perm) U</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>BE</strong></td>
+<td style="text-align: center;">[R: [U, R D R’]]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>BF</strong></td>
+<td style="text-align: center;">[R’: [R’ D’ R, U’]]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>BG</strong></td>
+<td style="text-align: center;">[R’ D R, U]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>BH</strong></td>
+<td style="text-align: center;">[U’, R D’ R’]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>BI</strong></td>
+<td style="text-align: center;">[R: [U2, R D R’]]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>BK</strong></td>
+<td style="text-align: center;">[D’: [R’ D R, U]]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>BL</strong></td>
+<td style="text-align: center;">[D: [R’ D’ R, U]]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>BO</strong></td>
+<td style="text-align: center;">[U’, R D R’]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>BP</strong></td>
+<td style="text-align: center;">[R’ D’ R, U]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>BR</strong></td>
+<td style="text-align: center;">[R’: [R’ D’ R, U2]]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>BS</strong></td>
+<td style="text-align: center;">[R’ D2 R, U]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>BT</strong></td>
+<td style="text-align: center;">[D: [U’, R D’ R’]]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>BU</strong></td>
+<td style="text-align: center;">[x’: [D2, R U R’]]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>BV</strong></td>
+<td style="text-align: center;">[D’ x’: [D2, R U R’]]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>BW</strong></td>
+<td style="text-align: center;">[D x: [R’ U’ R, D2]]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>BX</strong></td>
+<td style="text-align: center;">[x: [R’ U’ R, D2]]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A la columna de l’esquerra hi ha els corresponents a la primera
+lletra del parell i a la dreta els corresponents a la segona lletra del
+parell. <em>A perm</em> és un cas del cub de rubik normal que es fa (R’
+U’ R’ D’ R U’ R’ D R U R’ D’ R U R’ D R2). Cal tambe tenir en compte que
+els algoritmes estan una notació diferents perquè es vegi de millor
+forma al ser tants algoritmes. Funciona de la següent manera [A,B] =
+A,B,A’,B’.</p>
+<table>
+<caption>Excepcions del mètode</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>NB</strong></th>
+<th style="text-align: center;">[U, R’ D R D’ R’ D’ R]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>QB</strong></td>
+<td style="text-align: center;">[R’ D R D’ R’ D’ R, U]</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Excepcions del mètode</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>BN</strong></th>
+<th style="text-align: center;">[R’ D R D’ R’ D’ R, U]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>BQ</strong></td>
+<td style="text-align: center;">[U, R’ D R D’ R’ D’ R]</td>
+</tr>
+</tbody>
+</table>
+<p>Aquests algoritmes estan escrits en una notació<a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>
+diferenti [Y,X]. El fet que estigui entre claudators indica que s’ha de
+fer en l’ordre Y X Y’ X’. És una mica més díficil de visualitzar però
+més fàcil a l’hora d’aplicar aquest mètode. Exepmle d’intercanvi de dues
+cantonades P i H</p>
+<figure>
+<img src="img/cubes/sec-4.png" style="width:9cm" />
+<figcaption>Secuencia Y (Esquerra) i Y X (Dreta)</figcaption>
+</figure>
+<figure>
+<img src="img/cubes/sec-5.png" style="width:9cm" />
+<figcaption>Secuencia Y X Y’ (Esquerra) i Y X Y’ X’(Dreta)</figcaption>
+</figure>
+<figure>
+<img src="img/cubes/sec-6.png" style="width:9cm" />
+<figcaption>Secuencia Y X Y’ X’ Z (Esquerra) i Y X Y’ X’ Z
+A(Dreta)</figcaption>
+</figure>
+<figure>
+<img src="img/cubes/sec-7.png" style="width:9cm" />
+<figcaption>Secuencia Y X Y’ X’ Z A Z’ (Esquerra) i Y X Y’ X’ Z A Z’
+A’(Dreta)</figcaption>
+</figure>
+<p>Com a orientació [Y,X] i [Z,A] són a la taula d’algoritmes PB i
+BH.</p>
+<p><span>Fins aquí el tutorial de 3BLD, espero que hagi sigut de fàcil
+comprensió i que t’hagi ajudat a resoldre el cub a cegues a les següents
+pàgines trobaràs les taules de memorització i dels algoritmes d’orozco i
+M2.</span></p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Intercanvi de posició amb una altre peça i de l’ordre de
+tot el conjunt<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Un cube cover és una tapa per cubs feta de cartró i que
+s’utlitza a les competicions<a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Manera d’escriure els algoritmes<a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>

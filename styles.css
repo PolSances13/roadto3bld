@@ -87,13 +87,40 @@ img {
 
 /* Estil Iframe */
 
+.titol-boto{
+  display: inline-block;
+  font-family: Arial;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-right: 150px;
+}
+
+.pdf-button {
+  background-color: rgb(0, 102, 255);
+  color: white; 
+  border: none; 
+  padding: 15px 32px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.pdf-button:hover {
+  background-color: rgb(0, 162, 255);
+  color: black;
+}
 
 .iframe-container {
   width: 90%;
   margin: 0 auto;
   padding: 20px;
 }
-
 
 iframe {
   width: 100%;
@@ -182,6 +209,7 @@ iframe {
   text-align: left;
   align-self: center;
   font-family: Arial;
+  background-color: #ffffff;
 }
 
 .text-grid h1,
@@ -192,7 +220,11 @@ iframe {
 
 .text-grid button {
   width: 50px;
-  height: 50px;
+  height: 50px; 
+}
+
+.btn:hover{
+  transform: scale(1.1);
 }
 
 .foto-de-perfil {
